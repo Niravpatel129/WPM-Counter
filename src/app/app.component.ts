@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   demoTextArray =
-    `Hello, this is a sample text. I wanted to tell you that the weather is great today.`.split(
-      ' '
-    );
+    `Hello this is a sample text the weather is great today`.split(' ');
 
   interval: any;
 
