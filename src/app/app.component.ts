@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   demoTextArray =
     `Hello this is a sample text the weather is great today`.split(' ');
 
@@ -36,12 +36,14 @@ export class AppComponent {
   }
 
   doesTextMatch(str1: string, indexOfTypedText: number) {
-    if (!this.typedText.split(' ')[indexOfTypedText]) return 'NoMatchYet';
-    if (str1.length !== this.typedText.split(' ')[indexOfTypedText].length)
+    if (
+      !this.typedText.split(' ')[indexOfTypedText] ||
+      str1.length !== this.typedText.split(' ')[indexOfTypedText].length
+    )
       return 'NoMatchYet';
 
-    const correct = str1 === this.typedText.split(' ')[indexOfTypedText];
-
-    return correct ? 'Match' : 'NoMatch';
+    return str1 === this.typedText.split(' ')[indexOfTypedText]
+      ? 'Match'
+      : 'NoMatch';
   }
 }
